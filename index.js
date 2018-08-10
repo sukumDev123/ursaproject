@@ -19,10 +19,26 @@ async function startFUnction() {
       "./key/pub/public2.pem",
       ursa
     );
-    const mee = "Sukum RSA!";
-    let txt = await readFile("./text.json", "utf8");
-    txt = JSON.parse(txt);
-    const testD = await decrptMsg(txt.encrypt, txt.sig, mee, key1.privateKey);
+    // const mee = "Sukum RSA!";
+    // // let txt = await readFile("./text.json", "utf8");
+    // // txt = JSON.parse(txt);
+    // const testD = await decrptMsg(txt.encrypt, txt.sig, mee, key1.privateKey);
+    const text = {
+      sukum: "name",
+      nilphect: "lastname"
+    };
+    const testEn = await encryptMessage(
+      JSON.stringify(text),
+      key1.publicKey,
+      key2.privateKey
+    );
+    const det = await decrptMsg(
+      testEn.encrypt,
+      testEn.sign,
+      JSON.stringify(text),
+      key1.privateKey
+    );
+    console.log(det);
   } catch (error) {
     return error;
   }

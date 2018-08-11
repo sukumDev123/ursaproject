@@ -27,16 +27,21 @@ async function startFUnction() {
       sukum: "name",
       nilphect: "lastname"
     };
+    const text1 = {
+      sukum: "name1",
+      nilphect: "lastname"
+    };
 
     const testEn = await encryptMessage(
-      JSON.stringify(text),
+      JSON.stringify(text1),
       key1.publicKey,
       key2.privateKey
     );
+    // console.log(testEn);
     const det = await decrptMsg(
       testEn.encrypt,
       testEn.signed,
-      JSON.stringify(text),
+      JSON.stringify(text1),
       key1.privateKey,
       key2.publicKey
     );

@@ -27,6 +27,7 @@ async function startFUnction() {
       sukum: "name",
       nilphect: "lastname"
     };
+
     const testEn = await encryptMessage(
       JSON.stringify(text),
       key1.publicKey,
@@ -34,11 +35,12 @@ async function startFUnction() {
     );
     const det = await decrptMsg(
       testEn.encrypt,
-      testEn.sign,
+      testEn.signed,
       JSON.stringify(text),
-      key1.privateKey
+      key1.privateKey,
+      key2.publicKey
     );
-    console.log(det);
+    console.log(typeof det, det);
   } catch (error) {
     return error;
   }
